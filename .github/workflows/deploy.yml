@@ -38,10 +38,10 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/server:0.0.1
-      # - name: Deploy to Vercel
-      #   env:
-      #     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      #   run: |
-      #     npm install -g vercel
-      #     vercel --prod --yes --name server --token $VERCEL_TOKEN
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --prod --yes --name server --token $VERCEL_TOKEN
 
