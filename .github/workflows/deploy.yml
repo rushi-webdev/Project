@@ -24,8 +24,7 @@ jobs:
       - name: Build Docker image
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/server
-          TAG: ${{ github.sha }}
-        run: docker build -t $IMAGE_NAME:$TAG .
+        run: docker build -t $IMAGE_NAME:0.0.1 .
 
       - name: Log in to Docker Hub
         env:
@@ -36,8 +35,7 @@ jobs:
       - name: Push Docker image
         env:
           IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/server
-          TAG: ${{ github.sha }}
-        run: docker push $IMAGE_NAME:$TAG
+        run: docker push $IMAGE_NAME:0.0.1
 
       - name: Deploy to Vercel
         env:
